@@ -7,4 +7,6 @@ import com.ammlee.brothers.buster.model.User;
  */
 public interface UserRepo {
     User findById(long userId);
+
+    void insert(User user);
 }

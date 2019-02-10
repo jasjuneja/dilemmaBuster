@@ -8,4 +8,6 @@ import com.ammlee.brothers.buster.model.UserSpecification;
 public interface UserSpecificationRepo {
 
     UserSpecification findByUser(long userId);
+
+    void insert(UserSpecification userSpecification);
 }

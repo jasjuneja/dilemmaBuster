@@ -25,4 +25,9 @@ public class DefaultUserSpecificationRepo implements UserSpecificationRepo {
 
         return mongoTemplate.findOne(query, UserSpecification.class);
     }
+
+    @Override
+    public void insert(UserSpecification userSpecification) {
+        mongoTemplate.save(userSpecification);
+    }
 }

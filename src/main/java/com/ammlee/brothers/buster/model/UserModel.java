@@ -1,13 +1,9 @@
 package com.ammlee.brothers.buster.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
-public class User {
-
-    @Id
-    private long id;
+/**
+ * @author thanos on 10/02/19
+ */
+public class UserModel {
 
     private String userName;
 
@@ -20,15 +16,6 @@ public class User {
     private String address;
 
     private Location location;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;

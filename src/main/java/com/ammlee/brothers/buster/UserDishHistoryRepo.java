@@ -9,4 +9,6 @@ import java.util.Collection;
  */
 public interface UserDishHistoryRepo {
     Collection<UserDishHistory> fingByUser(long userId);
+
+    void insert(UserDishHistory userDishHistory);
 }

@@ -27,4 +27,9 @@ public class DefaultUserDishHistoryRepo implements UserDishHistoryRepo {
         return mongoTemplate.find(query, UserDishHistory.class);
 
     }
+
+    @Override
+    public void insert(UserDishHistory userDishHistory) {
+        mongoTemplate.save(userDishHistory);
+    }
 }

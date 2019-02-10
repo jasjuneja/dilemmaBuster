@@ -1,39 +1,18 @@
 package com.ammlee.brothers.buster.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.List;
 
 /**
- * @author jaspreet on 27/01/19
+ * @author thanos on 10/02/19
  */
-@Document
-public class UserSpecification {
-    @Id
-    private String id;
-    private long userId;
+public class UserSpecificationModel {
+
     private List<String> allergies;
-    private Category category;
+    private String category;
     private Location location;
     private List<String> likes;
     private List<String> disLikes;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 
     public List<String> getAllergies() {
         return allergies;
@@ -43,11 +22,11 @@ public class UserSpecification {
         this.allergies = allergies;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

@@ -24,4 +24,14 @@ public class DefaultUserRepo implements UserRepo {
         query.addCriteria(Criteria.where("userId").is(userId));
         return mongoTemplate.findOne(query, User.class);
     }
+
+    @Override
+    public void insert(User user) {
+        User existingUser = mongoTemplate.findOne(new Query(Criteria.where("userName").is(user.getUserName())), User.class);
+
+        if(existingUser != null){
+           new Exception("User Already exists with username:" + user.getUserName());
+        }
+        mongoTemplate.save(user);
+    }
 }
