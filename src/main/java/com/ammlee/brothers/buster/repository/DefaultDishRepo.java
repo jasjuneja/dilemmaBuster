@@ -36,7 +36,7 @@ public class DefaultDishRepo implements DishRepo {
 
 
         Criteria criteria = Criteria.where("dishCategory").is(dishCategory.name())
-                .and("id").ne(userDishHistories.stream().map(UserDishHistory::getDishId).collect(Collectors.toList()));
+                .and("_id").ne(userDishHistories.stream().map(UserDishHistory::getDishId).collect(Collectors.toList()));
 
         if(userSpecification != null){
             criteria.and("category").is(userSpecification.getCategory().name());
