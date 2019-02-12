@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document
+@Document(collection = "dishes")
 public class Dish {
 
     @Id
@@ -24,7 +24,7 @@ public class Dish {
     private String complementsWith;
     private String tasteType;
     private String category;
-    private List<DishCategory> categories;
+    private List<DishTime> dishTime;
 
     public String getId() {
         return id;
@@ -146,15 +146,15 @@ public class Dish {
         this.category = category;
     }
 
-    public List<DishCategory> getCategories() {
-        return categories;
+    public List<DishTime> getDishTime() {
+        return dishTime;
     }
 
-    public void setCategories(List<DishCategory> categories) {
-        this.categories = categories;
+    public void setDishTime(List<DishTime> dishTime) {
+        this.dishTime = dishTime;
     }
 
-    public enum DishCategory{
+    public enum DishTime {
         BREAKFAST,LUNCH, EVE_SNACK,DINNER
     }
 }

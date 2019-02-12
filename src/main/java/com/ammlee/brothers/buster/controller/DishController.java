@@ -33,23 +33,23 @@ public class DishController {
     public Collection<Dish> getDishes(@PathVariable("userId") long userId) {
         UserSpecification userSpecification = userSpecificationRepo.findByUser(userId);
 
-        Dish.DishCategory dishCategory;
+        Dish.DishTime dishTime;
 
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
         if (timeOfDay < 12) {
-            dishCategory = Dish.DishCategory.BREAKFAST;
+            dishTime = Dish.DishTime.BREAKFAST;
         } else if (timeOfDay >= 12 && timeOfDay < 16) {
-            dishCategory = Dish.DishCategory.LUNCH;
+            dishTime = Dish.DishTime.LUNCH;
         } else if (timeOfDay >= 16 && timeOfDay < 21) {
-            dishCategory = Dish.DishCategory.EVE_SNACK;
+            dishTime = Dish.DishTime.EVE_SNACK;
         } else {
-            dishCategory = Dish.DishCategory.DINNER;
+            dishTime = Dish.DishTime.DINNER;
         }
 
         Collection<UserDishHistory> userDishHistory = dishHistoryRepo.fingByUser(userSpecification.getUserId());
-        return dishRepo.getAllDishes(userSpecification, dishCategory, userDishHistory);
+        return dishRepo.getAllDishes(userSpecification, dishTime, userDishHistory);
     }
 
     @RequestMapping(value = "/read/{userId}/{dishId}", method = RequestMethod.PUT)

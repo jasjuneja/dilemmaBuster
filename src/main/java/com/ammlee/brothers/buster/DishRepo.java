@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 public interface DishRepo {
 
-    Collection<Dish> getAllDishes(UserSpecification userSpecification, Dish.DishCategory dishCategory,
+    Collection<Dish> getAllDishes(UserSpecification userSpecification, Dish.DishTime dishTime,
                                   Collection<UserDishHistory> userDishHistory);
 
 }
