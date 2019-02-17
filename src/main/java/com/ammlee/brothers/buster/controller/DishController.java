@@ -29,12 +29,18 @@ public class DishController {
     @Autowired
     UserDishHistoryRepo dishHistoryRepo;
 
-    @RequestMapping(value = "/getDishes/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "{userId}", method = RequestMethod.GET)
     public Collection<Dish> getDishes(@PathVariable("userId") long userId) {
         UserSpecification userSpecification = userSpecificationRepo.findByUser(userId);
 
-        Dish.DishTime dishTime;
+        Dish.DishTime dishTime = getDishTime();
 
+        Collection<UserDishHistory> userDishHistory = dishHistoryRepo.fingByUser(userSpecification.getUserId());
+        return dishRepo.getAllDishes(userSpecification, dishTime, userDishHistory);
+    }
+
+    private Dish.DishTime getDishTime() {
+        Dish.DishTime dishTime;
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
@@ -47,9 +53,7 @@ public class DishController {
         } else {
             dishTime = Dish.DishTime.DINNER;
         }
-
-        Collection<UserDishHistory> userDishHistory = dishHistoryRepo.fingByUser(userSpecification.getUserId());
-        return dishRepo.getAllDishes(userSpecification, dishTime, userDishHistory);
+        return dishTime;
     }
 
     @RequestMapping(value = "/read/{userId}/{dishId}", method = RequestMethod.PUT)
